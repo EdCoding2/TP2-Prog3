@@ -1,0 +1,58 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(Windows) Exécuter",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/program.exe",
+      "args": ["7f138a09169b250e9dcb378140907378"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/build/",
+      "environment": [],
+      "preLaunchTask": "(Windows) Compiler",
+      "logging": {
+        "moduleLoad": false
+      }
+    },
+    {
+      "name": "(MacOS) Exécuter",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/program",
+      "args": ["7f138a09169b250e9dcb378140907378"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/build/",
+      "environment": [],
+      "MIMode": "lldb",
+      "targetArchitecture": "arm64",
+      "preLaunchTask": "(MacOS) Compiler",
+      "logging": {
+        "moduleLoad": false
+      }
+    },
+    {
+      "name": "(Linux) Exécuter",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/program",
+      "args": ["7f138a09169b250e9dcb378140907378"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/build/",
+      "environment": [],
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "setupCommands": [
+        {
+          "description": "Pretty-printing pour GDB",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "(Linux) Compiler",
+      "logging": {
+        "moduleLoad": false
+      }
+    }    
+  ]
+}
