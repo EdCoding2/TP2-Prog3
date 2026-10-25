@@ -9,7 +9,7 @@
 	"editor.copyWithSyntaxHighlighting": false,
 	"editor.inlayHints.enabled": "off",
 	"inlineChat.askInChat": false,
-	"chat.disableAIFeatures": true,
+	"chat.disableAIFeatures": false,
 	"chat.editing.revealNextChangeOnResolve": false,
   "files.exclude": {
     ".vscode": true
