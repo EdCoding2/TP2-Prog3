@@ -28,7 +28,7 @@
 
 ## On essaie de trouver la chaîne de caractères hachée (force brute)
 
-(si nb de possibilités && chaîne n'a pas été trouvée) -> on agrandit le nombre de lettres de la chaine de caractères à trouver(3 lettres -> 4 lettres).
+(si nb de possibilités est épuisé && chaîne n'a pas été trouvée) -> on agrandit le nombre de lettres de la chaine de caractères à trouver(3 lettres -> 4 lettres).
 
 Nb de possibilités: 95(32-126) ^ nbDeLettres -> variable **long**
 
@@ -68,7 +68,19 @@ En conservant l'ordre ASCII croissant (espace, !, ", #, etc.) :
 2. on verifie son hash code. (si le hash code est != de l'original(chaineArg1) -> continuer; else -> arrêter(on a trouvé le mot);) **fonction au futur**
 3. Si toutes les possibilités avec X nombre de lettre a fini -> on incremente X nombre de lettre +1;
 
-### fonction pour éviter les valeurs inutiles d'un tableau
+### fonction pour conserver les valeurs utiles du tableau
+// est ce qu'on peut donner la taille d'un tableau via une variable? Oui, mais par des raisons particulières -> non.
+// qu'est ce qu'on va retourner? Un tableau?
+
+
+
+params: char tabMotGen, int nbDeLettres
+
+char 
+
+for(int i = 0; i < nbDeLettres; i ++){
+
+}
 
 ### fonction verification de hash code
 ```c
@@ -78,13 +90,15 @@ short verificationHashCode(char tabMotsGen[], int nbDeLettres, char hashCodeOrig
 	// si on hache le tabMotsGen comme ceci on hâchera aussi ses champs contenant des espaces. 
 	// Donc, il prendre compte de seulement des indices qui sont pas des ' ' dans mon cas.
 	// je pourrais prendre un autre tableau et stocker seulement les indices qui ne sont pas des ' '.
-	// on fera une boucle pour stocker que les valeurs qui sont -> autre fonction
+	// on fera une boucle pour stocker que les valeurs qui sont -> autre fonction(ont va la faire avant de l'envoyer ici verificationHashCode)
 
+	// solution - > mettre nbDeLettres au lieu de strlen(tabMotsGen)
+	
 	MD5_CTX context;
 	unsigned char digest[16];
 
 	MD5Init(&context);
-	MD5Update(&context, tabMotsGen, strlen(tabMotsGen));
+	MD5Update(&context, tabMotsGen, nbDeLettres ); 
 	MD5Final(digest, &context);
 
 	char byte[3], md5[33] = "";
@@ -95,7 +109,7 @@ short verificationHashCode(char tabMotsGen[], int nbDeLettres, char hashCodeOrig
 
 	// verification:
 
-	return strcmp(md5, hashCodeOrigine) ? 0 : 1;
+	return strcmp(md5, hashCodeOrigine) ? 0 : 1; // si il y a une égalité -> 0, sinon -> 1
 }
 ```
 
